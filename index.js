@@ -18,7 +18,7 @@ if (env == "development" || env == "test") {
 const configDb = {
   development: process.env.DB_LOCAL_URI,
   test: process.env.DBTEST,
-  production: process.env.DBCONNECTION
+  production: process.env.DB_PROD_URI
 };
 
 // DB Connection
