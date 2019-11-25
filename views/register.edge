@@ -1,0 +1,64 @@
+@layout('layouts.app')
+
+@section('content')
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/register-cover.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Create New Account</h1>
+            <span class="subheading">Start now and share what you thought.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+
+        @if(errors.length > 0)
+          <ul class="list-group">
+            @each(error in errors)
+              <li class="list-group-item text-danger">
+                {{ error }}
+              </li>
+            @endeach
+          </ul>
+        @endif
+
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label for="">Name</label>
+              <input type="text" name="username" value="{{ data.username || ''}}" placeholder="username" class="form-control">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label for="">Email</label>
+              <input type="email" name="email" value="{{ data.email || ''}}" placeholder="email" class="form-control">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label for="">Password</label>
+              <input type="password" name="password" value="{{ data.password || ''}}" placeholder="password" class="form-control">
+            </div>
+          </div>         
+
+          <div class="form-group text-center my-4">
+            <button class="btn btn-primary">Register Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+@endsection
